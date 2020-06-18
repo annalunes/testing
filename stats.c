@@ -9,19 +9,25 @@
  *
  *****************************************************************************/
 /**
- * @file <Add File Name> 
- * @brief <Add Brief Description Here >
+ * @file stats.c
+ * @brief stats.c is the implementation file of the assignment. This assignment
+ * proposed a code that analyzes an array of unsigned char data and report on
+ * the max, min, mean and medium of the data set. The data set is also
+ * reordered from large to small.
  *
- * <Add Extended Description Here>
+ * This assignment proposed a code that analyzes an array of unsigned char data
+ * and report on the max, min, mean and medium of the data set. The data set is
+ * also reordered from large to small.
  *
- * @author <Add FirsName LastName>
- * @date <Add date >
+ * @author Anna Nunes
+ * @date June 17th 2020
  *
  */
 
 
 
 #include <stdio.h>
+#include <stdint.h>
 #include "stats.h"
 
 /* Size of the Data Set */
@@ -41,3 +47,55 @@ void main() {
 }
 
 /* Add other Implementation File Code Here */
+uint16_t find_median(unsigned char* array, uint8_t array_size)
+{
+	uint16_t median = 0;
+	//use the reorder function + mean function
+}
+
+uint16_t find_mean(unsigned char* array, uint8_t array_size)
+{
+	uint16_t sum = 0;
+	for (uint8_t i = 0; i < array_size; i++)
+	{
+		sum += (uint16_t)(array[i]);
+	}
+	return (sum/array_size);
+}
+
+uint16_t find_maximum(unsigned char* array, uint8_t array_size)
+{
+	uint16_t maximum = 0;
+	for (uint8_t i = 0; i < array_size; i++)
+	{
+		if ((uint16_t)(array[i]) > maximum)
+			maximum = (uint16_t)(array[i]);
+	}
+	return maximum;
+}
+
+uint16_t find_minimum(unsigned char* array, uint8_t array_size)
+{
+	uint16_t minimum = array[0];
+	for (uint8_t i = 1; i < array_size; i++)
+	{
+		if ((uint16_t)(array[i]) < minimum)
+			minimum = (uint16_t)(array[i]);
+	}
+	return minimum;
+}
+
+void print_statistics(uint16_t minimum, uint16_t maximum, uint16_t mean, uint16_t median)
+{
+	printf("\nBelow are the statistics about the set of data:\n")
+	printf("The minimum value in the array is %d\n", minimum);
+	printf("The maximum value in the array is %d\n", maximum);
+	printf("The mean value in the array is %d\n", mean);
+	printf("The median value in the array is %d\n", median);
+}
+
+void print_array(unsigned char* array, uint8_t array_size)
+{
+	for (uint8_t i = 0; i < array_size; i++)
+		printf("%d ", array[i]);
+}
